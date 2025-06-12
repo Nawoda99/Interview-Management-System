@@ -106,6 +106,28 @@ const UserController = {
       res.status(500).json({ error: err.message });
     }
   },
+  async changePassword(req, res) {
+    const { uid, currentPassword, newPassword } = req.body;
+    try {
+      const userRecord = await admin.auth().getUser(uid);
+      const email = userRecord.email;
+
+      const response = await axios.post(
+        `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.FIREBASE_API_KEY}`,
+        {
+          email,
+          password: currentPassword,
+          returnSecureToken: false,
+        }
+      );
+      if (response.status === 200) {
+        await admin.auth().updateUser(uid, { password: newPassword });
+        res.status(200).json({ message: "Password updated successfully" });
+      }
+    } catch (err) {
+      res.status(400).json({ error: "Current password is incorrect." });
+    }
+  },
 };
 
 module.exports = UserController;

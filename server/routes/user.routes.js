@@ -8,7 +8,11 @@ router.get("/", authenticateToken, UserController.getAllUsers);
 router.get("/:id", authenticateToken, UserController.getUser);
 router.put("/:id", authenticateToken, UserController.updateUser);
 router.delete("/:id", authenticateToken, UserController.deleteUser);
-
 router.post("/login", UserController.login);
+router.post(
+  "/updatePassword",
+  authenticateToken,
+  UserController.changePassword
+);
 
 module.exports = router;
