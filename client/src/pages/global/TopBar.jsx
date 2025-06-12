@@ -1,8 +1,8 @@
 import { Menu, Settings, User } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import ProfileSettings from "../profileView";
 import ProfileManager from "../ProfileManager";
+import ChangePassword from "../changePassword";
 
 const TopBar = ({ onLogout, onToggleSidebar }) => {
   const [showUserMenu, setShowUserMenu] = useState(false);
@@ -11,6 +11,7 @@ const TopBar = ({ onLogout, onToggleSidebar }) => {
 
   const navigate = useNavigate();
   const [showProfile, setShowProfile] = useState(false);
+  const [showChangePassword, setShowChangePassword] = useState(false);
 
   const onMenuClick = () => {
     if (onToggleSidebar) {
@@ -20,6 +21,9 @@ const TopBar = ({ onLogout, onToggleSidebar }) => {
 
   const openProfile = () => {
     setShowProfile(true);
+  };
+  const openChangePassword = () => {
+    setShowChangePassword(true);
   };
 
   return (
@@ -79,7 +83,10 @@ const TopBar = ({ onLogout, onToggleSidebar }) => {
                     >
                       Profile Settings
                     </button>
-                    <button className="w-full text-left px-4 py-2 text-sm text-amber-700 hover:bg-amber-50 transition-colors">
+                    <button
+                      className="w-full text-left px-4 py-2 text-sm text-amber-700 hover:bg-amber-50 transition-colors"
+                      onClick={openChangePassword}
+                    >
                       Change Password
                     </button>
                     {/* <button className="w-full text-left px-4 py-2 text-sm text-amber-700 hover:bg-amber-50 transition-colors">
@@ -105,6 +112,12 @@ const TopBar = ({ onLogout, onToggleSidebar }) => {
           </div>
           {showProfile && (
             <ProfileManager user={user} onClose={() => setShowProfile(false)} />
+          )}
+          {showChangePassword && (
+            <ChangePassword
+              user={user}
+              onClose={() => setShowChangePassword(false)}
+            />
           )}
         </div>
       )}
