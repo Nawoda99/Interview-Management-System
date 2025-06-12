@@ -14,9 +14,11 @@ import {
   Building2,
   X,
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = ({ isOpen, onClose }) => {
   const [expandedMenus, setExpandedMenus] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleEscape = (e) => {
@@ -54,7 +56,12 @@ const Sidebar = ({ isOpen, onClose }) => {
       label: "Dashboard",
       icon: Home,
       path: "/dashboard",
-      active: true,
+    },
+    {
+      Key: "users",
+      label: "Users",
+      icon: Users,
+      path: "/users",
     },
     {
       key: "interviews",
@@ -132,6 +139,7 @@ const Sidebar = ({ isOpen, onClose }) => {
             if (hasSubmenu) {
               toggleSubmenu(item.key);
             } else {
+              navigate(item.path);
               onClose();
             }
           }}

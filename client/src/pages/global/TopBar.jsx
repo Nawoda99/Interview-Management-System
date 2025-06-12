@@ -89,9 +89,6 @@ const TopBar = ({ onLogout, onToggleSidebar }) => {
                     >
                       Change Password
                     </button>
-                    {/* <button className="w-full text-left px-4 py-2 text-sm text-amber-700 hover:bg-amber-50 transition-colors">
-                      Help & Support
-                    </button> */}
                   </div>
 
                   <div className="border-t border-amber-100 pt-1">
@@ -100,6 +97,7 @@ const TopBar = ({ onLogout, onToggleSidebar }) => {
                         localStorage.removeItem("user");
                         setShowUserMenu(false);
                         onLogout && onLogout();
+                        navigate("/");
                       }}
                       className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
                     >
