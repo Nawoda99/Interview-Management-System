@@ -15,7 +15,6 @@ import Card from "../components/common/Card";
 import InputField from "../components/common/InputField";
 import axios from "axios";
 
-
 const ProfileInformation = ({ user, onClose, onNavigateToView }) => {
   const [formData, setFormData] = useState({
     email: user?.email || "",
@@ -25,6 +24,7 @@ const ProfileInformation = ({ user, onClose, onNavigateToView }) => {
     uid: user?.uid || "",
     username: user?.username || "",
   });
+
   const userjson = JSON.parse(localStorage.getItem("user")) || "{}";
   const authToken = userjson?.idToken || {};
 
@@ -36,7 +36,6 @@ const ProfileInformation = ({ user, onClose, onNavigateToView }) => {
       ...prev,
       [field]: value,
     }));
-    // Clear error when user starts typing
     if (errors[field]) {
       setErrors((prev) => ({
         ...prev,
@@ -75,12 +74,12 @@ const ProfileInformation = ({ user, onClose, onNavigateToView }) => {
 
     try {
       const userId = formData.uid || formData.id;
-      const response = await axios.put(
+      await axios.put(
         `http://localhost:3000/users/${userId}`,
         formData,
         {
           headers: {
-            Authorization: `Bearer ${authToken}`, // if using JWT auth
+            Authorization: `Bearer ${authToken}`,
           },
         }
       );
@@ -139,6 +138,7 @@ const ProfileInformation = ({ user, onClose, onNavigateToView }) => {
             </button>
           </div>
         </div>
+
         <div className="p-6 overflow-y-auto max-h-[60vh]">
           <div className="space-y-6">
             <Card title="Profile Picture">
@@ -164,6 +164,7 @@ const ProfileInformation = ({ user, onClose, onNavigateToView }) => {
                 </div>
               </div>
             </Card>
+
             <Card title="Account Information" className="mb-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <InputField
@@ -174,7 +175,6 @@ const ProfileInformation = ({ user, onClose, onNavigateToView }) => {
                   icon={User}
                   placeholder="Username"
                 />
-
                 <InputField
                   label="Role"
                   value={formData.role}
@@ -197,11 +197,12 @@ const ProfileInformation = ({ user, onClose, onNavigateToView }) => {
                   icon={Mail}
                   placeholder="Enter email address"
                 />
-
                 <InputField
                   label="Mobile Number"
                   value={formData.mobileNumber}
-                  onChange={(value) => handleInputChange("mobileNumber", value)}
+                  onChange={(value) =>
+                    handleInputChange("mobileNumber", value)
+                  }
                   type="tel"
                   error={errors.mobileNumber}
                   icon={Phone}
