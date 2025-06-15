@@ -5,6 +5,10 @@ import TopBar from "./pages/global/TopBar";
 import Sidebar from "./pages/global/Sidebar";
 import UserManagement from "./pages/Users";
 import Create from "./pages/Users/create";
+import InterviewSessionForm from "./pages/InterviewSessionForm";
+import ViewProfile from "./pages/profileView";
+import EditProfile from "./pages/profileEdit";
+import ChangePassword from "./pages/changePassword";
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -16,6 +20,10 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/users" element={<UserManagement />} />
         <Route path="/users/create" element={<Create />} />
+        <Route path="/interview" element={<InterviewSessionForm />} />
+        <Route path="/view-profile" element={<ViewProfile />} />
+        <Route path="/edit-profile" element={<EditProfile />} />
+        <Route path="/change-password" element={<ChangePassword />} />
         <Route
           path="*"
           element={
