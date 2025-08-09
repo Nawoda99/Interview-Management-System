@@ -3,6 +3,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const userRoutes = require("./routes/user.routes");
 const designationRoutes = require("./routes/designation.routes");
+const sessionRoutes = require("./routes/session.routes");
+const applicantsRoutes = require("./routes/applicants.routes");
 
 require("./config/firebase");
 const cors = require("cors");
@@ -21,6 +23,8 @@ app.use(
 
 app.use("/users", userRoutes);
 app.use("/designations", designationRoutes);
+app.use("/sessions", sessionRoutes);
+app.use("/applicants", applicantsRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
