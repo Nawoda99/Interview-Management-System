@@ -9,6 +9,7 @@ import InterviewSessionForm from "./pages/InterviewSessionForm";
 import ViewProfile from "./pages/profileView";
 import EditProfile from "./pages/profileEdit";
 import ChangePassword from "./pages/changePassword";
+import ManageDesignation from "./pages/Designation/ManageDesignation";
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -24,6 +25,7 @@ function App() {
         <Route path="/view-profile" element={<ViewProfile />} />
         <Route path="/edit-profile" element={<EditProfile />} />
         <Route path="/change-password" element={<ChangePassword />} />
+        <Route path="/designation" element={<ManageDesignation />} />
         <Route
           path="*"
           element={

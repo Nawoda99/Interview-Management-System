@@ -12,7 +12,7 @@ const InputField = ({
   className = "",
 }) => (
   <div className={`space-y-2 ${className}`}>
-    <label className="text-sm font-medium text-amber-900 flex items-center gap-2">
+    <label className="flex items-center gap-2 text-sm font-medium text-amber-900">
       {Icon && <Icon size={16} />}
       {label}
       {disabled && <span className="text-xs text-amber-600">(Read-only)</span>}
@@ -29,7 +29,7 @@ const InputField = ({
         } ${error ? "border-red-300 focus:ring-red-500" : "border-amber-200"}`}
       />
     </div>
-    {error && <p className="text-red-500 text-sm">{error}</p>}
+    {error && <p className="text-sm text-red-500">{error}</p>}
   </div>
 );
 

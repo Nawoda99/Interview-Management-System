@@ -13,6 +13,10 @@ const Button = ({
     primary: "bg-amber-600 hover:bg-amber-700 text-white focus:ring-amber-500",
     secondary:
       "bg-amber-100 hover:bg-amber-200 text-amber-800 focus:ring-amber-300",
+    danger: "bg-red-400 hover:bg-red-200 text-red-100 focus:ring-red-500",
+    success: "bg-green-500 hover:bg-green-600 text-white focus:ring-green-500",
+    outlineDanger:
+      "border border-red-400 text-red-400 hover:bg-red-50 focus:ring-red-500",
     outline:
       "border border-amber-600 text-amber-600 hover:bg-amber-50 focus:ring-amber-500",
   };

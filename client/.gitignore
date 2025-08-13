@@ -30,3 +30,5 @@ firestore.indexes.json
 firestore.rules
 hosting.cHVibGlj.cache
 hosting.ZGlzdA.cache
+
+.env*
